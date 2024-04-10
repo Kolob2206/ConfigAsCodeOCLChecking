@@ -75,3 +75,33 @@ step "deploy-an-azure-app-service" {
         }
     }
 }
+
+step "deploy-a-package2" {
+    name = "Deploy a Package2"
+    properties = {
+        Octopus.Action.TargetRoles = "single"
+    }
+
+    action {
+        action_type = "Octopus.TentaclePackage"
+        properties = {
+            Octopus.Action.EnabledFeatures = "Octopus.Features.JsonConfigurationVariables,Octopus.Features.ConfigurationVariables,Octopus.Features.ConfigurationTransforms"
+            Octopus.Action.Package.AutomaticallyRunConfigurationTransformationFiles = "True"
+            Octopus.Action.Package.AutomaticallyUpdateAppSettingsAndConnectionStrings = "True"
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.JsonConfigurationVariablesTargets = "appsettings.json"
+            Octopus.Action.Package.PackageId = "tftest"
+        }
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "tftest"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
