@@ -12,6 +12,7 @@ step "deploy-a-package" {
             Octopus.Action.Package.FeedId = "octopus-server-built-in"
             Octopus.Action.Package.JsonConfigurationVariablesTargets = "appsettings.json"
             Octopus.Action.Package.PackageId = "jsons"
+            Octopus.Action.RunOnServer = "false"
         }
         worker_pool_variable = ""
 
@@ -23,5 +24,23 @@ step "deploy-a-package" {
                 SelectionMode = "immediate"
             }
         }
+    }
+}
+
+step "run-a-script" {
+    name = "Run a Script"
+    properties = {
+        Octopus.Action.TargetRoles = "single"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptBody = "asdf"
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+        }
+        worker_pool_variable = ""
     }
 }
