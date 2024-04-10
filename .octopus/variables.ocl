@@ -8,16 +8,6 @@ variable "Variable" {
         environment = ["test"]
     }
 
-    value "Env3" {
-        description = ""
-        environment = ["azure-cloud"]
-    }
-
-    value "Env4" {
-        description = ""
-        environment = ["approval"]
-    }
-
     value "Env5" {
         description = ""
         environment = ["production"]
