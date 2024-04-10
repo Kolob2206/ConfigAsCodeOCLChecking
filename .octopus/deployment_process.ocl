@@ -37,9 +37,11 @@ step "deploy-an-azure-app-service" {
         action_type = "Octopus.AzureAppService"
         properties = {
             Octopus.Action.Azure.DeploymentType = "Package"
+            Octopus.Action.EnabledFeatures = "Octopus.Features.JsonConfigurationVariables,Octopus.Features.ConfigurationTransforms,Octopus.Features.SubstituteInFiles"
             Octopus.Action.Package.DownloadOnTentacle = "False"
             Octopus.Action.Package.FeedId = "octopus-server-built-in"
             Octopus.Action.Package.PackageId = "jsons"
+            Octopus.Action.RunOnServer = "false"
             OctopusUseBundledTooling = "False"
         }
         worker_pool_variable = ""
