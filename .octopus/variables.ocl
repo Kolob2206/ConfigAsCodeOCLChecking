@@ -1,0 +1,25 @@
+variable "Variable" {
+    value "Env1" {
+        environment = ["development"]
+    }
+
+    value "Env2" {
+        description = ""
+        environment = ["test"]
+    }
+
+    value "Env3" {
+        description = ""
+        environment = ["azure-cloud"]
+    }
+
+    value "Env4" {
+        description = ""
+        environment = ["approval"]
+    }
+
+    value "Env5" {
+        description = ""
+        environment = ["production"]
+    }
+}
